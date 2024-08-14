@@ -3,214 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>软件下载界面</title>
-        <style>
+    <title>专业司机培训学校</title>
+    <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f7f7f7;
+            display: flex;
         }
-        .container {
-            max-width: 1200px;
-            margin: auto;
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            height: 100vh;
+            color: white;
+            padding: 20px;
+            transition: width 0.3s;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .sidebar .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .sidebar .submenu a {
+            padding: 5px;
+        }
+        .main-content {
+            flex-grow: 1;
             padding: 20px;
         }
-        .software-item {
-            background: #fff;
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .card {
+            background-color: #fff;
             border: 1px solid #ddd;
-            margin-bottom: 20px;
+            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .software-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
+        .card:hover {
+            transform: translateY(-5px);
         }
-        .software-title {
-            font-size: 24px;
+        .card-category {
+            text-transform: uppercase;
+            color: #666;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            font-size: 1em;
             color: #333;
-            margin-bottom: 10px;
         }
-        .software-description {
-            margin-bottom: 20px;
-        }
-        .software-rating {
-            color: gold;
-            margin-bottom: 10px;
-        }
-        .download-button {
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: row; /* 保持侧边栏在左侧 */
+            }
+            .sidebar {
+                width: 90px; /* 保持固定宽度 */
+                height: auto;
+            }
+            .main-content {
+                flex-grow: 1;
+                padding: 20px;
+            }
+            .card-container {
+                grid-template-columns: 1fr; /* 卡片堆叠 */
+            }
+            .download-btn {
             display: inline-block;
+            padding: 5px 10px;
             background-color: #5cb85c;
             color: white;
-            padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            
         }
-        .download-button:hover {
+        .download-btn:hover {
             background-color: #4cae4c;
         }
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .software-item {
-                padding: 10px;
-            }
-            .software-title {
-                font-size: 20px;
-            }
-            .download-button {
-                padding: 8px 16px;
-            }
-        }
+    }
     </style>
-        <script type="text/javascript">
-        // JavaScript函数，用于弹出不同类型的窗口
-        function showAlert(message) {
-            alert(message);
-        }
-
-        function showConfirm(message) {
-            if (confirm(message)) {
-                alert('你点击了“确定”');
-            } else {
-                alert('你点击了“取消”');
-            }
-        }
-
-        function showPrompt(message) {
-            var userInput = prompt(message, '');
-            if (userInput !== null) {
-                alert('你输入的是: ' + userInput);
-            }
-        }
-    </script>
 </head>
 <body>
-    <div class="container">
-        <!-- 软件下载卡片 -->
-        <div class="software-item">
-            <h2 class="software-title">专搜3D图片内容</h2>
-            <p class="software-description"></p>
-
-            <a href="http://3d.iqdb.org/" class="download-button">官网</a> 
-
+    <div class="sidebar">
+                <h2></h2>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu0')">首页</a>
+        <div id="submenu0" class="submenu">
+            <a href="https://abcd136.github.io/b/">跳转</a>
+            </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu1')">通知</a>
+        <div id="submenu1" class="submenu">
+            <a href="https://abcd136.github.io/b1/">公告</a>
         </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">多种服务图片搜图</h2>
-            <p class="software-description"></p>
-
-            <a href="http://iqdb.org/" class="download-button">官网</a>
-            
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu2')">广播</a>
+        <div id="submenu2" class="submenu">
+            <a href="https://abcd136.github.io/b41/">广播站</a>
         </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">二次元画像詳細検索</h2>
-            <p class="software-description"></p>
-
-            <a href="https://ascii2d.net/" class="download-button">官网</a> 
-            
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu3')">安卓</a>
+        <div id="submenu3" class="submenu">
+            <a href="#">软件</a>
+            <a href="#">梯子</a>
+            <a href="#">影视</a>
+            <a href="#">小说</a>
+            <a href="#">AI</a>
+            <a href="#">搜图</a>
+            <a href="#">私密</a>
+            <a href="#">网盘</a>
+            <a href="#">手游</a>
+            <a href="#">动漫</a>
+            <a href="#">工具</a>
         </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">素材反向识图</h2>
-            <p class="software-description"></p>
-
-            <a href="https://www.everypixel.com/" class="download-button">官网</a> 
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu4')">电脑</a>
+        <div id="submenu4" class="submenu">
+            <a href="#">软件</a>
+            <a href="#">梯子</a>
+            <a href="#">游戏网站</a>
+            <a href="#">游戏加速</a>
+            <a href="#">游戏</a>
+            <a href="#">系统</a>
         </div>
-            
-        <div class="software-item">
-            <h2 class="software-title">素材搜图</h2>
-            <p class="software-description"></p>
-
-            <a href="https://unsplash.com/" class="download-button">官网</a>
-            
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu5')">吃瓜</a>
+        <div id="submenu5" class="submenu">
+            <a href="#">网络</a>
         </div>
-            
-        <div class="software-item">
-            <h2 class="software-title">谷歌识图镜像站</h2>
-            <p class="software-description"></p>
-
-            <a href="https://soik.top/" class="download-button">官网</a>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu6')">车牌</a>
+        <div id="submenu6" class="submenu">
+            <a href="#">网络</a>
+            <a href="#">车号</a>
+            <a href="#">里番</a>
         </div>
-            
-        <div class="software-item">
-            <h2 class="software-title">必应视觉搜寻</h2>
-            <p class="software-description"></p>
-
-            <a href="https://cn.bing.com/visualsearch" class="download-button">官网</a>
-            
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu7')">旧网站</a>
+        <div id="submenu7" class="submenu">
+            <a href="https://abcd136.github.io/abcd/">跳转</a>
         </div>
-        
-            <div class="software-item">
-            <h2 class="software-title">老牌识图(被墙)</h2>
-            <p class="software-description"></p>
-
-            <a href="https://tineye.com/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">谷歌搜图(被翻)</h2>
-            <p class="software-description"></p>
-
-            <a href="https://www.google.com.hk/imghp" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">搜狗搜图</h2>
-            <p class="software-description"></p>
-
-            <a href="https://pic.sogou.com/pic/index.jsp?v=5/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">360搜图</h2>
-            <p class="software-description"></p>
-
-            <a href="https://m.image.so.com/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">俄罗斯搜索引擎</h2>
-            <p class="software-description"></p>
-
-            <a href="https://yandex.com/images/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">百度搜图</h2>
-            <p class="software-description"></p>
-
-            <a href="https://graph.baidu.com/pcpage/index?tpl_from=pc/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">动漫视频截图识别</h2>
-            <p class="software-description"></p>
-
-            <a href="https://trace.moe/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">PPBC中国植物图像库</h2>
-            <p class="software-description"></p>
-
-            <a href="https://ppbc.iplant.cn/" class="download-button">官网</a>
-        </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">二次元识图</h2>
-            <p class="software-description"></p>
-
-            <a href="https://saucenao.com/" class="download-button">官网</a>
-        </div>
-        
-        <!-- 更多软件卡片可以按照上面的格式添加 -->
     </div>
-    
+    <div class="main-content">
+        <div class="header">
+            <h1></h1>
+        </div>
 
+        <div class="card-container">
+            <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">专搜3D图片内容</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="http://3d.iqdb.org/" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">多种服务图片搜图</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="http://iqdb.org/" class="download-btn">官网</a>
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">二次元画像詳細検索</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://ascii2d.net/" class="download-btn">官网</a>
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">素材反向识图
+</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://www.everypixel.com/" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">素材搜图</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://unsplash.com/" class="download-btn">官网</a>
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">谷歌识图镜像网站</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://soik.top/" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">必应视觉搜寻</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://cn.bing.com/visualsearch" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">老牌识图(被墙)</div>
+        <div class="card-content">
+<div class="download-section">
+            
+        <p><a href="https://tineye.com/" class="download-btn">官网</a>
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">谷歌搜图(被翻)</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://www.google.com.hk/imghp" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">俄罗斯搜索引擎</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://yandex.com/images/" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">二次元识图</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://saucenao.com/" class="download-btn">官网</a>
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">动漫视频截图识别</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://trace.moe/" class="download-btn">官网</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">PPBC中国植物图像库</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://ppbc.iplant.cn/" class="download-btn">官网</a>
+
+</div>
+            </div>
+    </div>
+            <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">百度搜图</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://graph.baidu.com/pcpage/index?tpl_from=pc/" class="download-btn">官网</a>
+
+</div>
+            </div>
+    </div>
+            <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">360搜图</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://m.image.so.com/" class="download-btn">官网</a>
+
+</div>
+            </div>
+    </div>
+            <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">搜狗搜图</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://pic.sogou.com/pic/index.jsp?v=5/" class="download-btn">官网</a>
+
+</div>
+            </div>
+    </div>
+
+    <script>
+        function toggleMenu(event, submenuId) {
+            event.preventDefault(); // 阻止链接的默认行为
+            var submenu = document.getElementById(submenuId);
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+        // ... JavaScript代码保持不变 ...
+    </script>
 </body>
 </html>
